@@ -1,4 +1,13 @@
 '''
+Run instructions:
+
+$ python3 json_to_csv.py big_yelp_data/business.json
+
+note: this is assuming you have business.json in a folder titled big_yelp_data in your current directory
+this is how I have it and it is not pushed to github thanks to .gitignore, so if you have it in a different directory,
+edit .gitignore accordingly
+
+
 Convert Yelp Academic Dataset from JSON to CSV
 https://github.com/tothebeat/Yelp-Challenge-Dataset/blob/master/convert.py
 By Paul Butler, No Rights Reserved
