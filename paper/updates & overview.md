@@ -1,5 +1,5 @@
-#Updates on our project:
-4/09/19
+# Updates on our project:
+*as of 4/09/19*
 
 
 1. Defining restaurant success (features to look at)
@@ -27,7 +27,7 @@ Green restaurants in NY (tri-state area)/ Total # of restaurants:
 
 __Yelp data:__
 
-# of Businesses in NY / Total # of businesses:
+number of Businesses in NY / Total # of businesses:
 __ /192609
 
 Restaurants in NY / Total Restaurants (USA):
@@ -37,8 +37,9 @@ New York Yelp Reviews / Yelp Reviews Total
 Need to filter. Not clean yet
 
 __Seafood Watch__
-# of Restaurants in NY / Total Restaurants
-Not clean yet.
+
+number of Restaurants in NY / Total Restaurants
+Not clean yet. *********
 
 __Overview of plan & next steps:__
 
