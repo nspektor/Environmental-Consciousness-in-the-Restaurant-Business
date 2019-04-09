@@ -19,18 +19,24 @@
 
 
 3. Cleaned data using Pandas Python -
-+54 Restaurants (NY) -- which data source is this from? 
 
 **GRA:**
 
-Green restaurants in NY / Total # of restaurants:
-78 / 603
+Green restaurants in NY (tri-state area)/ Total # of restaurants:
+119 / 603
 
 **Yelp data:**
 
 # of Businesses in NY / Total # of businesses:
+__ /192609
+Restaurants in NY / Total Restaurants (USA):
+13 / 77332
 
-Restaurants in NY / Total Restaurants:
+New York Yelp Reviews / Yelp Reviews Total
+Need to filter. Not clean yet
+**Seafood Watch**
+# of Restaurants in NY / Total Restaurants
+Not clean yet.
 
 **Overview of plan & next steps:**
 
