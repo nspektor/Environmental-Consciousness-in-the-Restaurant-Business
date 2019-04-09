@@ -29,8 +29,9 @@ __Yelp data:__
 
 # of Businesses in NY / Total # of businesses:
 __ /192609
+
 Restaurants in NY / Total Restaurants (USA):
-13 / 77332
+22 / 77332
 
 New York Yelp Reviews / Yelp Reviews Total
 Need to filter. Not clean yet
