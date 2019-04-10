@@ -101,7 +101,7 @@ mydf
 #Italian, Restaurants, Pizza, Chicken Wings
 #CAFES???
 
-restaurant_words = ['RESTAURANTS','BARS','FOOD','BREAKFAST & BRUNCH','DESSERTS','BAKERIES']
+restaurant_words = ['RESTAURANTS','BARS','FOOD','BREAKFAST & BRUNCH','DESSERTS','BAKERIES, DELIS, SANDWICHES', 'COFFEE & TEA', 'DINERS', 'CAFES']
 pattern = '|'.join(restaurant_words)
 mydf['restaurant'] = mydf.categories.str.contains(pattern)
 
