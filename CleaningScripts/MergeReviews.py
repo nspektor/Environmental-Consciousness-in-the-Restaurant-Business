@@ -5,7 +5,7 @@ import csv
 import pandas as pd
 import numpy as np
 
-rdf = pd.read_csv('DataSources/review.csv', header = 0)
+rdf = pd.read_csv('DataSources/mini_review.csv', header = 0)
 bdf = pd.read_csv('DataSources/all_clean_restaurants.csv', header = 0)
 
 myrdf = rdf[['business_id','text']]
