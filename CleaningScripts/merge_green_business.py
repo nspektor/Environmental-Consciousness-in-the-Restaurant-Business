@@ -16,35 +16,35 @@ import numpy as np
 
 # Fuzzymatch on restaurant name
 
-import pyspark
-sc = pyspark.SparkContext(appName="myAppName")
-from pyspark.sql import SQLContext
-sqlContext = SQLContext(sc)
-from pyspark.sql.session import SparkSession
-spark = SparkSession(sc)
-from pyspark.sql import functions as F
-from pyspark.sql.functions import upper, col, regexp_extract, regexp_replace
-from pyspark.sql.functions import levenshtein 
-
-biz = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load('DataSources/all_clean_restaurants.csv')
-mybiz = biz
-
-green = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load('DataSources/clean_green.csv')
-mygreen = green
-
-mybiz.show()
-
-mygreen = mygreen.withColumnRenamed('Name', 'green_name')
-mygreen = mygreen.drop('Address', 'City', 'State', 'Zip')
-
-mygreen.show()
-
-joinedDF = mybiz.join(mygreen, levenshtein(mybiz["name"], mygreen["green_name"]) < 3) 
-joinedDF = joinedDF.drop('_c0')
-joinedDF.head()
-
-joinedDF.write.csv("business_and_green.csv")
-
+# import pyspark
+# sc = pyspark.SparkContext(appName="myAppName")
+# from pyspark.sql import SQLContext
+# sqlContext = SQLContext(sc)
+# from pyspark.sql.session import SparkSession
+# spark = SparkSession(sc)
+# from pyspark.sql import functions as F
+# from pyspark.sql.functions import upper, col, regexp_extract, regexp_replace
+# from pyspark.sql.functions import levenshtein
+#
+# biz = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load('DataSources/all_clean_restaurants.csv')
+# mybiz = biz
+#
+# green = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load('DataSources/clean_green.csv')
+# mygreen = green
+#
+# mybiz.show()
+#
+# mygreen = mygreen.withColumnRenamed('Name', 'green_name')
+# mygreen = mygreen.drop('Address', 'City', 'State', 'Zip')
+#
+# mygreen.show()
+#
+# joinedDF = mybiz.join(mygreen, levenshtein(mybiz["name"], mygreen["green_name"]) < 3)
+# joinedDF = joinedDF.drop('_c0')
+# joinedDF.head()
+#
+# joinedDF.write.csv("business_and_green.csv")
+#
 
 #____________________________________________________________________________________
 #PANDAS
