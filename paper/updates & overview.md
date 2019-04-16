@@ -53,4 +53,11 @@ __Overview of plan & next steps:__
 __Future potential steps:__
 Prove/show correlation does Green =?= Success
 
+Meeting 4/16/19
+
+Split data set into labeled and unlabeled.
+What constitutes labeled data? Anything with a higher grade than zero.
+If it appears in green restaurant data, keep their ratings
+Seafood watch appearance weight_?_
+Green rating + seafood rating 
 
