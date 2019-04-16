@@ -23,3 +23,9 @@ Weird zipcodes
 
 Canada is included
 600	LADY EATON COLLEGE DINING HALL	1600 WEST BANK DRIVE	PETERBOROUGH, ONTARIO		K9L 0G2	1
+
+
+Notes on all_clean_restaurants:
+26,007 restaurants are duplicated for name but have different business IDs'
+should we delete duplicates by name? or group them and append all text??
+
