@@ -15,6 +15,10 @@ yelp_reviews['text'] = yelp_reviews['text'].str.replace(',', ' ')
 
 print("yelp_businesses:\n", yelp_businesses.head())
 yelp_reviews = yelp_reviews.groupby('business_id')['text'].apply(list).to_frame().reset_index()
+# yelp_reviews['text'] = yelp_reviews['text'].str.replace(',', ' ')
+# yelp_reviews['text'] = yelp_reviews['text'].str.replace('[', '')
+# yelp_reviews['text'] = yelp_reviews['text'].str.replace(']', '')
+
 print("yelp_reviews:\n", yelp_reviews.head())
 # merge businesses and reviews
 businesses_and_reviews = yelp_businesses.merge(yelp_reviews, left_on='business_id', right_on='business_id', how='inner',
@@ -60,5 +64,7 @@ nameRevGreen = nameRevGreen.sort_values(['rating'])
 print("green: ", nameRevGreen['rating'].sum())
 print("not green: ", nameRevGreen['rating'].isnull().sum())
 # nameRevGreen.to_csv('big_yelp_data/name_review_green.csv')
-smallNameReviewGreen = nameRevGreen[:84]
+print(nameRevGreen['rating'].value_counts())
+print(nameRevGreen['rating'][:30])
+smallNameReviewGreen = nameRevGreen[:56]
 smallNameReviewGreen.to_csv('DataSources/small_name_review_green.csv', index=False)
