@@ -1,3 +1,5 @@
 big_yelp_data/*
 mini_yelp_data/*
 .idea/*
+.ipynb_checkpoints/
+DataSources/businesses_and_reviews.csv

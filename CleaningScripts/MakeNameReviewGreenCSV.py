@@ -26,6 +26,8 @@ businesses_and_reviews = yelp_businesses.merge(yelp_reviews, left_on='business_i
 businesses_and_reviews = businesses_and_reviews.groupby('name')['text'].apply(list).to_frame().reset_index()
 businesses_and_reviews = businesses_and_reviews.sort_values(['name'])
 
+businesses_and_reviews.to_csv('DataSources/businesses_and_reviews.csv', index=False)
+
 # Green Restaurant Association Data
 green = pd.read_csv('DataSources/clean_green.csv', header=0, delimiter=',')
 green = green.sort_values(['Name'])
