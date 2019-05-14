@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[129]:
+# In[61]:
 
 
 import numpy as np
@@ -14,33 +14,33 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize 
 
 # read csv into a dataframe
-df_idf = pd.read_csv("BDSProject/DataSources/small_name_review_green.csv")
+df_idf = pd.read_csv("DataSources/small_name_review_green.csv")
  
 # print schema
 print(df_idf.dtypes)
 print(df_idf.shape)
 
 
-# In[130]:
+# In[62]:
 
 
 df_idf.head()
 
 
-# In[131]:
+# In[63]:
 
 
 mydfidf = df_idf.copy()
 mydfidf = mydfidf.drop('rating', axis=1)
 
 
-# In[132]:
+# In[64]:
 
 
 mydfidf.info()
 
 
-# In[133]:
+# In[65]:
 
 
 from nltk.stem import WordNetLemmatizer 
@@ -57,32 +57,33 @@ def pre_process(text):
     text=re.sub("(\\d|\\W)+"," ",text)
     
     #splittext = text.split(' ')
+    #lemmatizer = nltk.stem.WordNetLemmatizer()
     #lemmatizer = WordNetLemmatizer() 
-    
+    #lemmatized_output = ([lemmatizer.lemmatize(w) for w in nltk.word_tokenize(text)])# if w not in string.punctuation]))
     #lemmatized_output = ' '.join([lemmatizer.lemmatize(w) for w in splittext])
     
-    return text#lemmatized_output
+    return text
 
 
-# In[134]:
+# In[66]:
 
 
 mydfidf['text'] = mydfidf['text'].apply(lambda x:pre_process(x))
 
 
-# In[135]:
+# In[67]:
 
 
 mydfidf.head()
 
 
-# In[136]:
+# In[82]:
 
 
 mydfidf['text'][2]
 
 
-# In[117]:
+# In[69]:
 
 
 def remove_stopwords(mytext):
@@ -101,91 +102,87 @@ def remove_stopwords(mytext):
     return filtered_sentence
 
 
-# In[141]:
+# In[71]:
 
 
-def lemma(mytext):
-    #splittext = mytext.split(' ')
-    lemmatizer = WordNetLemmatizer() 
-    
-    lemmatized_output = [lemmatizer.lemmatize(w) for w in mytext]#splittext]
-    #print(lemmatized_output)
-    #text = lemmatizer.lemmatize(text)
-    return lemmatized_output
+#def lemma(mytext):
+#    lemmatizer = WordNetLemmatizer() 
+#    lemmatized_output = [lemmatizer.lemmatize(w) for w in mytext]#splittext]
+#    return lemmatized_output
 
 
-# In[139]:
+# In[95]:
+
+
+import nltk
+
+w_tokenizer = nltk.tokenize.WhitespaceTokenizer()
+lemmatizer = nltk.stem.WordNetLemmatizer()
+
+def lemmatize_text(text):
+    return [' '.join(lemmatizer.lemmatize(w,'v') for w in w_tokenizer.tokenize(text))]
+
+
+# In[96]:
 
 
 #clean will have no stopwords, mydfidf will
 clean = mydfidf.copy()
 
 
-# In[140]:
+# In[97]:
 
 
 clean['text'] = clean['text'].apply(lambda x:remove_stopwords(x))
 
 
-# In[144]:
-
-
-clean['text'] = clean['text'].apply(lambda x:lemma(x))
-
-
-# In[142]:
-
-
-clean.head()
-
-
-# In[148]:
+# In[98]:
 
 
 clean['text'] = clean['text'].str.join(' ')
 
 
-# In[149]:
+# In[99]:
+
+
+clean['text_lemmatized'] = clean.text.apply(lemmatize_text)
+
+
+# In[100]:
 
 
 clean.head()
 
 
-# In[150]:
+# In[101]:
 
 
-clean['text'][2]
+clean['text_lemmatized'][2]
 
 
-# In[146]:
+# In[102]:
 
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 vectorizer = TfidfVectorizer(max_features=300, smooth_idf=True, )#tokenizer=tokens ,use_idf=True, smooth_idf=True, sublinear_tf=False)
 
 
-# In[151]:
+# In[103]:
 
 
 X = vectorizer.fit_transform(clean['text'])
 
 
-# In[152]:
+# In[104]:
 
 
 print(vectorizer.get_feature_names())
 
 
-# In[153]:
+# In[105]:
 
 
 print(X.shape)
-
-
-# In[ ]:
-
-
-X
 
 
 # In[ ]:
