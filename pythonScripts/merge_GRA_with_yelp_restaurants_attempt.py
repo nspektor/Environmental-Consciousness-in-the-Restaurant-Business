@@ -26,7 +26,7 @@ import numpy as np
 # from pyspark.sql.functions import upper, col, regexp_extract, regexp_replace
 # from pyspark.sql.functions import levenshtein
 #
-# biz = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load('DataSources/all_clean_restaurants.csv')
+# biz = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load('DataSources/clean_yelp_restaurants.csv')
 # mybiz = biz
 #
 # green = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load('DataSources/clean_green.csv')
@@ -50,7 +50,7 @@ import numpy as np
 #PANDAS
 # exact match on name
 
-biz = pd.read_csv('DataSources/all_clean_restaurants.csv', header=0, delimiter=',')
+biz = pd.read_csv('DataSources/clean_yelp_restaurants.csv', header=0, delimiter=',')
 green = pd.read_csv('DataSources/clean_green.csv', header=0, delimiter=',')
 
 biz = biz.sort_values(['name'])

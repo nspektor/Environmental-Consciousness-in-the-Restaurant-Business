@@ -175,7 +175,7 @@ all_df[['name', 'review_text', 'green_boolean','overall_green_rating', 'GRA_rati
 # In[298]:
 
 
-yelp_businesses = pd.read_csv('DataSources/all_clean_restaurants.csv', header=0)
+yelp_businesses = pd.read_csv('DataSources/clean_yelp_restaurants.csv', header=0)
 yelp_businesses = yelp_businesses[['name', 'stars']]
 yelp_businesses.head()
 

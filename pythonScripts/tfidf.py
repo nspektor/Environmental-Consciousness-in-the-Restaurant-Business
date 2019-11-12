@@ -1,12 +1,5 @@
 #!/usr/bin/env python
-# coding: utf-8
-
-# In[34]:
-
-
-import numpy as np
 import pandas as pd
-import csv
 
 import nltk
 from nltk.corpus import stopwords
