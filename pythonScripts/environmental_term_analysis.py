@@ -9,7 +9,7 @@ import re
 
 environmentalTerms = [line.rstrip('\n') for line in open("../data/helper_files/environmentalTerms.txt")]
 environmentalTerms = list(dict.fromkeys(environmentalTerms))
-restaurants_and_reviews = pd.read_csv("../data/small_name_review_green.csv")
+restaurants_and_reviews = pd.read_csv("../data/big_name_review_green.csv")
 restaurants_and_reviews = restaurants_and_reviews.head(500)
 
 
@@ -64,13 +64,15 @@ restaurants_and_reviews['env_terms_percent_of_overall_words'] *= 100
 
 bins = [-1, 0.01, 0.3, 1, 100]
 labels = [0, 1, 2, 3]
-restaurants_and_reviews['term_based_green_rating'] = pd.cut(restaurants_and_reviews['env_terms_percent_of_overall_words'],
-                                                 bins=bins, labels=labels)
+restaurants_and_reviews['term_based_green_rating'] = pd.cut(
+    restaurants_and_reviews['env_terms_percent_of_overall_words'],
+    bins=bins, labels=labels)
 
 # greenest = businesses_and_reviews.loc[businesses_and_reviews['green_rating'] == 3]
 # greenest[['name', 'text', 'green_rating']].to_csv('../data/greenest.csv')
 
-restaurants_and_reviews[['name', 'text', 'term_based_green_rating']].to_csv(
-    '../data/small_term_based_green_rating_results.csv', index=False)
+restaurants_and_reviews[['name', 'term_based_green_rating', 'text']].to_csv(
+    '../data/big_term_based_green_rating_results.csv', index=False)
 
-restaurants_and_reviews.to_csv('small_comprehensive_results.csv', index=False)
+restaurants_and_reviews[['name', 'term_based_green_rating', 'rating', 'text']]\
+    .to_csv('../data/big_comprehensive_results.csv', index=False)
